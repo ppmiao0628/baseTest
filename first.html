@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ppm</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.esm.bundle.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    <div v-for="item in items">
+        <div>初始：{{item}}</div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+<div id="animated-number-demo">
+    <input v-model.number="number" type="number" step="20">
+    <p>{{ animatedNumber }}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+<script src="https://cdn.jsdelivr.net/npm/color-js@1.0.3"></script>
+<div id="example-7">
+    <input type="text" v-model="colorQuery" v-on:keyup.enter="updateColor" placeholder="enter a color">
+    <button @click="updateColor">Update</button>
+    <p>Preview:</p>
+    <span
+        v-bind:style="{ backgroundColor: tweenedCSSColor }"
+        class="example-7-color-preview"></span>
+
+    <p>{{ tweenedCSSColor }}</p>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+
+</div>
+<!-- JavaScript 代码需要放在尾部（指定的HTML元素之后） -->
+<script>
+    new Vue({
+        el: '#app',
+        created: function () {
+            var data = [{name:'keller'},{name:'aor'},{name:'aaa'},{name:'abc'},{name:'keller'}];
+            for (var i=0;i<data.length;i++){
+                if (data[i].name==='aaa'){
+                    data.splice(i,1);
+                    i--;
+                    continue;
+                }
+                this.items.push(data[i]);
+            }
+            console.log(data);
+            console.log(this.items);
+        },
+        data: {
+            items:[],
+            message: 'Hello World!'
+        }
+    });
+    new Vue({
+        el: '#animated-number-demo',
+        data: {
+            number: 0,
+            animatedNumber: 0
+        },
+        watch: {
+            number: function (newValue, oldValue) {
+                var vm = this;
+
+                function animate() {
+                    if (TWEEN.update()) {
+                        requestAnimationFrame(animate)
+                    }
+                }
+
+                new TWEEN.Tween({tweeningNumber: oldValue})
+                    .easing(TWEEN.Easing.Quadratic.Out)
+                    .to({tweeningNumber: newValue}, 500)
+                    .onUpdate(function () {
+                        vm.animatedNumber = this.tweeningNumber.toFixed(0)
+                    })
+                    .start();
+                animate()
+            }
+        }
+    })
+    var Color = net.brehaut.Color
+    new Vue({
+        el: '#example-7',
+        data: {
+            colorQuery: '',
+            color: {
+                red: 0,
+                green: 0,
+                blue: 0,
+                alpha: 1
+            },
+            tweenedColor: {}
+        },
+        created: function () {
+            this.tweenedColor = Object.assign({}, this.color)
+        },
+        watch: {
+            color: function () {
+                function animate() {
+                    if (TWEEN.update()) {
+                        requestAnimationFrame(animate)
+                    }
+                }
+
+                new TWEEN.Tween(this.tweenedColor)
+                    .to(this.color, 750)
+                    .start()
+                animate()
+            }
+        },
+        computed: {
+            tweenedCSSColor: function () {
+                return new Color({
+                    red: this.tweenedColor.red,
+                    green: this.tweenedColor.green,
+                    blue: this.tweenedColor.blue,
+                    alpha: this.tweenedColor.alpha
+                }).toCSS()
+            }
+        },
+        methods: {
+            updateColor: function () {
+                this.color = new Color(this.colorQuery).toRGB()
+                this.colorQuery = ''
+            }
+        }
+    })
+    var mySwiper = new Swiper ('.swiper-container', {
+        initialSlide: 2,
+//        loop: true,
+//        autoplay: true
+//        direction: 'vertical',
+//        autoplay: true,
+//
+//        // 如果需要分页器
+//        pagination: {
+//            el: '.swiper-pagination',
+//        },
+//
+//        // 如果需要前进后退按钮
+//        navigation: {
+//            nextEl: '.swiper-button-next',
+//            prevEl: '.swiper-button-prev',
+//        },
+//
+//        // 如果需要滚动条
+//        scrollbar: {
+//            el: '.swiper-scrollbar',
+//        },
+    })
+</script>
+<style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+        display: block;
+        text-align: center;
+    }
+
+    .example-7-color-preview {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+    }
+    .swiper-container {
+        /*width: 600px;*/
+        height: 300px;
+        background-color: #1AB55B;
+    }
+</style>
+</body>
+</html>

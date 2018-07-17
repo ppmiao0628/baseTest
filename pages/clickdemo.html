@@ -1,0 +1,174 @@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>数据采集需求单</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body  id="app">
+<table border = 2>
+    <tr>
+        <td bgcolor="#AEEEEE">基本信息</td>
+        <td>
+            <div><from>
+                数据使用范围：<input type="text" size= "80" placeholder="（集团/个金会内部/专业公司内部/跨专业公司/其他）" ><br>
+                数据使用人员: <input type="text" size= "80" placeholder="（请填写使用数据人员姓名，若跨部门、专业公司使用，请注明人员具体部门、公司信息）"><br>
+                需求频次：<input type="text" size= "80" placeholder="（制式/非制式采集）">
+            </from>
+            </div></td>
+    </tr>
+    <tr>
+        <td bgcolor="#AEEEEE" rowspan="6">数据提取需求说明</td>
+        <td>
+            一、数据需求类型（说明所需数据细分类型）<br>
+            <form>
+                <input type="radio" name="type">统计类数据（特殊统计需求）<br>
+                <input type="radio" name="type">清单类数据
+            </form></td>
+    </tr>
+    <tr>
+        <td>
+            二、数据需求目的：<br>
+            1、	采集需求的原因及目的：<br>
+            <textarea type="text" rows="4" cols="70" placeholder="(请详细说明采集需求的背景及原因)"></textarea><br>
+            2、	应用方向：
+            <input type="text" size= "50" placeholder="（请说明数据提取后的用途，例如经营分析、销售服务等）"><br>
+            3、	数据应用用户类型：
+            <form>
+                <input type="radio" name="type1">业务员
+                <input type="radio" name="type1">客服人员
+                <input type="radio" name="type1">其他，请说明<input type="text"></form>
+            4、	若提取数据为产生销售或服务行为，需填写以下具体行动方案内容：<br>
+            <form>
+                <input type="radio" name="type2" value="yes" id = "four_yes" @click="radioEvent(true)">是
+                <input type="radio" name="type2" value="no" id = "four_no" @click="radioEvent(false)">不是</form>
+            <div id="content4" display="none">
+                (1)	方案目的:<br>
+                <textarea type = "text" rows="3" cols="50" placeholder = "（销售或服务行为的目的）"></textarea><br>
+                (2)	行动计划及销售渠道:<br>
+                <textarea type = "text" rows="3" cols="50" placeholder = "（销售或服务行为活动安排）"></textarea><br>
+                (3)	起止时间:<br>
+                开始时间：<input type = "date"><br>
+                结束时间：<input type = "date"><br>
+                (4)	是否与客户直接接触<br>
+                <input type="radio" name="type3" value="yes">是
+                <input type="radio" name="type3" value="no">不是<br>
+                (5)	预期效果:<br>
+                <textarea type = "text" rows="3" cols="50" placeholder = "（请说明行动方案预计达成的指标/效果，需是可量化可评估的）"></textarea><br>
+            </div>
+            </div>
+            5、	若提取数据为清单类数据，需填写以下具体信息：
+            <form>
+                <input type="radio" name="type3" value="yes" id = "five_yes">是
+                <input type="radio" name="type3" value="no" id = "five_no">不是
+            </form>
+            <div id = "five">
+                (1)	数据对接系统名称:
+                <input type="text"><br>
+                (2)	数据应用容量预估:
+                <input type="text"><br>
+                (3)	集团共享标签名:<br>
+                <textarea type="text" rows="3" cols="50" ></textarea><br>
+                (4)	申请需求字段具体说明:<br>
+                <textarea type="text" rows="3" cols="50" ></textarea><br>
+                (5)	加工逻辑说明:<br>
+                <textarea type="text" rows="3" cols="50" ></textarea><br>
+                (6)	涉及的数据属主:<br>
+                <textarea type="text" rows="3" cols="50" ></textarea><br>
+                (7)	获取数据属主授权情况说明:<br>
+                <textarea type="text" rows="3" cols="50" ></textarea><br>
+                (8)	在GBD中具体分析人员：<br>
+                <input type="radio" name="type4" value="self">需求方自行分析
+                <input type="radio" name="type4" value="GBD">科技大数据平台部
+                <input type="radio" name="type4" value="SEARCH">科技智能引擎部
+                <input type="radio" name="type4" value="CRM">科技CRM团队<BR>
+                (9)	数据输出方式（仅支持CRM实时输出）<BR>
+                具体实现途径：<BR>
+                <input type="radio" name="type5" value="GUI">界面嵌入
+                <input type="radio" name="type5" value="SELECT1">高可用查询
+                <input type="radio" name="type5" value="SELECT2">高并发高响应查询
+                <input type="radio" name="type5" value="SELECT3">实时查询透传
+                <input type="radio" name="type5" value="SELECT4">实时事件推送<BR>
+                注：只有已获取授权的用户、系统与触点能够查询授权范围内的数据。<BR>
+                CRM通过自动监控运营机制，对未经授权的查询进行监控并追责。
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            三、需求字段信息<br>
+            <table border = 2>
+                <tr>
+                    <td>需求类型</td>
+                    <td>细分需求类型</td>
+                    <td>字段名</td>
+                    <td>字段说明</td>
+                    <td>涉及专业公司</td>
+                </tr>
+                <tr rowspan="2">
+                    <td>统计类</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td>清单类</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            四、信息使用安全措施<br>
+            <textarea type="text" rows="4" cols="70" placeholder="(信息在传输、存储、使用上的安全保密措施，信息使用沟通与信息接受具体岗位与人员)"></textarea><br>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <br>五、数据应用后的评估方案<br>
+            <form>
+                评估频率：<input type="text" size= "40"><br>
+                自评负责人：<input type="text" size= "40"><br>
+                评估方案：<br>
+                <textarea type="text" rows="4" cols="70"></textarea>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            六、信息使用完成后的处置措施<br>
+            <textarea type="text" rows="4" cols="70"></textarea><br>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#AEEEEE" >特别说明</td>
+        <td bgcolor="red">
+            如已有相关沟通或背景文件，请附上附件：<br>
+            如已与相关专业公司/部门沟通过，请将沟通结果作为附件，<br>
+            如有关会议纪要、Email、EOA签报等，请具体说明沟通的时间，沟通主题，沟通内容，沟通结果等<br>
+        </td>
+    </tr>
+</table>
+</body>
+<script>
+    document.onload = function () {
+        var radio4Yes = document.getElementById('four_yes');
+        radio4Yes.onclick=function () {
+            document.getElementById('content4').display = ''
+        }
+    }
+</script>
+</html>
+

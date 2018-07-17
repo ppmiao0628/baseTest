@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="mcanvas" style="border:1px solid #666666"></canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById('mcanvas');
+    var ctx = canvas.getContext("2d");
+    var grd = ctx.createLinearGradient(0, 0, 100, 0);
+    grd.addColorStop(0, "#FF0000");
+    grd.addColorStop(1, "#ffffff");
+
+    //        ctx.fillStyle = grd;
+    //        ctx.fillRect(0,0,100,100);
+    //        ctx.moveTo(0, 0);
+    //        ctx.lineTo(100,100);
+    //        ctx.moveTo(100, 0);
+    //        ctx.lineTo(0,100);
+    ctx.beginPath();
+    ctx.arc(50, 50, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = grd;
+    ctx.fill();
+</script>
+<div class="box1"></div>
+<div class="box2"></div>
+<style>
+    .box1 {
+        background-color: #1AB55B;
+        box-sizing: border-box;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        padding: 50px;
+        margin: 50px;
+    }
+
+    .box2 {
+        background-color: #4175D5;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        padding: 50px;
+        margin: 50px;
+    }
+</style>
+</body>
+</html>

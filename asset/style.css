@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/*账户管理*/
+/* 标签重置 */
+
+
+.sqrcode {
+    font-size: 0.3rem;
+    margin: .1rem auto;
+    text-align: center;
+}
+.sinput {
+    font-size: 0.3rem;
+    width: 5rem;
+    height: .48rem;
+    padding: .1rem;
+    border: 0.01rem solid red;
+    margin: .1rem auto;
+    text-align: center;
+    display: block;
+}
+.sbtn {
+    font-size: 0.3rem;
+    width: 1rem;
+    height: .48rem;
+    margin: .1rem auto;
+    border: 0.01rem solid red;
+    display: block;
+}

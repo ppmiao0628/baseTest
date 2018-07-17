@@ -1,0 +1,1408 @@
+@charset "UTF-8";
+/*账户余额*/
+/*集合所有插件*/
+/* 标签重置 */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  outline: none;
+  word-break: break-all;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*:not(input, select, textarea) {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; }
+
+html {
+  font-size: 100px; }
+
+html, body {
+  height: 100%; }
+
+html, body, div, span, h1, p, img, i, ul, li, header, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline; }
+
+body {
+  background: #F5F5F5; }
+
+body {
+  color: #1E1E1E;
+  font: 12px 'PingFang SC', 'Droid Sans',"HelveticaNeue","Helvetica Neue", arial, sans-serif;
+  -webkit-font-smoothing: antialiased; }
+
+button {
+  color: #1E1E1E;
+  font: 12px 'PingFang SC', 'Droid Sans';
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 0;
+  border: 0; }
+
+::-webkit-input-placeholder {
+  color: #B2B2B2; }
+
+header, section {
+  display: block; }
+
+ul {
+  list-style: none; }
+
+img {
+  display: block;
+  border: none; }
+
+/* 公共样式 */
+body {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto; }
+
+header + section {
+  padding-top: .88rem; }
+
+section {
+  padding-bottom: .20rem; }
+
+/*字号*/
+.pec-font-size20 {
+  font-size: 0.2rem !important; }
+
+.pec-font-size24 {
+  font-size: 0.24rem !important; }
+
+.pec-font-size28 {
+  font-size: 0.28rem !important; }
+
+.pec-font-size30 {
+  font-size: 0.3rem !important; }
+
+.pec-font-size32 {
+  font-size: 0.32rem !important; }
+
+.pec-font-size36 {
+  font-size: 0.36rem !important; }
+
+.pec-font-size40 {
+  font-size: 0.4rem !important; }
+
+.pec-font-size48 {
+  font-size: 0.48rem !important; }
+
+/*字符颜色*/
+
+.pec-color-3F4246 {
+  color: #1E1E1E !important; }
+
+.pec-color-63666B {
+  color: #666666 !important; }
+
+.pec-color-B2B2B2 {
+  color: #B2B2B2 !important; }
+
+.pec-color-28B45F {
+  color: #1AB55B !important; }
+
+.pec-color-F17940 {
+  color: #F37938 !important; }
+
+.pec-holderbox {
+  width: 100%;
+  height: .20rem;
+  font-size: 0;
+  background: #F5F5F5; }
+
+/*对齐,显示，隐藏等*/
+
+.pec-text-right {
+  text-align: right; }
+
+/*内边距、外边距*/
+
+.pec-padding-bottom30 {
+  padding-bottom: 0.3rem !important; }
+
+.pec-margin-top10 {
+  margin-top: 0.1rem !important; }
+
+.pec-margin-top5 {
+  margin-top: 0.05rem !important; }
+
+.pec-margin-top20 {
+  margin-top: 0.2rem !important; }
+
+.pec-margin-top30 {
+  margin-top: 0.3rem !important; }
+
+.pec-margin-top40 {
+  margin-top: 0.4rem !important; }
+
+.pec-margin-top50 {
+  margin-top: 0.5rem !important; }
+
+.pec-border-bottom0 {
+  border-bottom: 0 !important; }
+.pec-border-bottom0:after {
+  height: 0 !important;
+  border-bottom: 0 !important; }
+
+.pec-link {
+  color: #4175D5; }
+.pec-link:active, .pec-link:visited {
+  color: #4175D5; }
+
+.pec-align-center {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.pec-space-between {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.add-card {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.pec-btn-zone .pec-primary-btn,
+.pec-btn-zone .pec-secondary-btn,
+.pec-list .pec-list-item .pec-item-body,
+.account-balance .account-balance-foot .option-item,
+.balance-box.CreditCard .pec-list-item .pec-item-foot,
+.add-card .add-txt,
+.rule-list .rule-box li,
+.tran-sequence-tabbar .tran-sequence-tabbar-item,
+.tran-list .tran-list-item .tran-item-body,
+.set-li-box .set-foot-body {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+.pec-btn-zone, .account-balance .balance-box .account-balance-head p, .balance-box.CreditCard .pec-list-item .pec-item-foot .money, .tran-sequence-tabbar, .tran-sequence-tabbar .tran-sequence-tabbar-item, .choice-time li p {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.pec-list .pec-list-item, .account-balance .balance-box .account-balance-head, .account-balance .account-balance-foot, .name-blance, .rule-list .rule-box, .curr-list .curr-list-item, .tran-xq, .tran-list .tran-list-item, .choice-time, .set-list-head, .set-li-box{
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.balance-box.CreditCard .pec-list-item , .set-li-box {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
+/*agreement*/
+
+/*按钮类*/
+button.pec-primary-btn,
+button.pec-secondary-btn {
+  position: relative;
+  display: block;
+  color: #FFFFFF;
+  background: #F37938;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+button.pec-secondary-btn {
+  color: #F37938;
+  background: #FFFFFF; }
+button.pec-secondary-btn:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  display: block;
+  width: 200%;
+  height: 200%;
+  border-radius: .16rem;
+  border: 1px solid #F37938;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0; }
+
+button[size="big"].pec-primary-btn,
+button[size="big"].pec-secondary-btn {
+  font-size: 0.4rem;
+  height: .90rem;
+  border-radius: .08rem;
+  padding-left: .48rem;
+  padding-right: .48rem; }
+
+button.pec-primary-btn:active {
+  background: #da5f1d; }
+
+button.pec-secondary-btn:active {
+  color: #da5f1d;
+  border-color: #da5f1d; }
+
+.pec-btn-zone {
+  font-size: 0;
+  padding-left: .30rem;
+  padding-right: .30rem; }
+.pec-btn-zone button + button {
+  margin-left: .30rem; }
+
+/*开关*/
+
+/*datepicker*/
+
+/*form*/
+
+/*freedom-selection*/
+
+/*header*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: .88rem;
+  text-align: center;
+  background: #FFFFFF; }
+header:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #D9D9D9;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+header .pec-header-left,
+header .pec-header-right {
+  position: absolute;
+  top: 0;
+  left: .30rem;
+  color: #F37938;
+  font-size: 0.3rem;
+  height: .88rem;
+  line-height: .88rem;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+header .pec-header-right {
+  left: initial;
+  right: .30rem; }
+header .pec-header-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2.86rem;
+  height: .88rem;
+  line-height: .88rem;
+  color: #F37938;
+  font-size: 0.36rem;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%); }
+
+/*图标*/
+.icon-back {
+  position: relative;
+  width: .88rem;
+  height: .88rem;
+  display: inline-block; }
+.icon-back:after {
+  position: absolute;
+  content: "";
+  top: .24rem;
+  left: .10rem;
+  width: .20rem;
+  height: .38rem;
+  display: block;
+  background-image: url("../images/common/icon-back.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+
+.icon-arrow {
+  width: .13rem;
+  height: .24rem;
+  margin-left: .16rem;
+  display: inline-block;
+  background: url("../images/common/arrow-right.svg") no-repeat center;
+  background-size: .13rem .24rem;
+  vertical-align: middle; }
+.icon-arrow.up {
+  margin-top: -.06rem;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg); }
+.icon-arrow.down {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg); }
+
+.icon-check,
+.icon-checked {
+  width: .36rem;
+  height: .36rem;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url("../images/common/icon-check.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+
+.icon-checked {
+  background-image: url("../images/common/icon-checked.svg"); }
+
+.icon-bank-pa {
+  width: .52rem;
+  height: .52rem;
+  display: inline-block;
+  background: url("../images/common/icon-bank-pa.png") no-repeat;
+  background-size: 100% 100%; }
+
+/*pull-refresh*/
+
+/*messagebox*/
+/*pop-btn*/
+
+/*navbar*/
+
+/*picker*/
+.icon-check, .icon-checked {
+  width: .38rem;
+  height: .38rem; }
+
+/* @import "../ext/pop-btn";由pwd、messagebox引入*/
+/*pop-btn*/
+
+/*pwd*/
+/*result*/
+
+/*list*/
+.pec-list-title {
+  color: #B2B2B2;
+  font-size: 0.24rem;
+  line-height: 1.4;
+  padding: .20rem .30rem;
+  background: #F5F5F5; }
+
+.pec-list {
+  position: relative;
+  font-size: 0.28rem;
+  background: #FFFFFF;
+  overflow: hidden; }
+.pec-list .pec-list-item {
+  line-height: 1.26;
+  position: relative;
+  min-height: 1.10rem;
+  padding-top: .20rem;
+  padding-bottom: .20rem;
+  padding-left: .30rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+.pec-list .pec-list-item:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.pec-list .pec-list-item:nth-last-of-type(1):after {
+  display: none; }
+.pec-list .pec-list-item .pec-item-head {
+  color: #666666;
+  font-size: 0.3rem;
+  width: 2.10rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+.pec-list .pec-list-item .pec-item-media {
+  font-size: 0;
+  margin-right: .30rem; }
+.pec-list .pec-list-item .pec-item-body {
+  color: #1E1E1E;
+  font-size: 0.3rem;
+  margin-right: .30rem; }
+.pec-list .pec-list-item .pec-item-foot {
+  font-size: 0.3rem;
+  margin-right: .30rem; }
+.pec-list .pec-list-item-assist {
+  position: relative;
+  font-size: 0.24rem;
+  color: #B2B2B2;
+  height: .24rem;
+  line-height: .24rem;
+  margin-top: .08rem; }
+
+/*Slide*/
+
+/*spinnermenu*/
+
+/*tabbar*/
+
+/*progress*/
+
+/*toast*/
+
+.account-balance {
+  margin-left: .3rem;
+  margin-right: .3rem;
+  border-radius: 0.18rem;
+  overflow: hidden; }
+.account-balance + .account-balance {
+  margin-top: .2rem; }
+.account-balance .balance-box {
+  background-image: url(../images/Account-Balance/bgOrange3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.account-balance .balance-box .account-balance-head {
+  padding: .3rem .3rem;
+  font-size: 0.3rem;
+  color: #FFFFFF; }
+.account-balance .balance-box .account-balance-head p {
+  font-size: 0.4rem;
+  color: #cb4e2a;
+  font-weight: bold; }
+.account-balance .balance-box .account-balance-body {
+  margin-top: -0.2rem; }
+.account-balance .balance-box .account-balance-body .pec-list {
+  background: transparent; }
+.account-balance .balance-box .account-balance-body .pec-list .pec-list-item:after {
+  border: none; }
+.account-balance .balance-box .account-balance-body .pec-list .pec-list-item .pec-item-head {
+  font-size: 0.36rem;
+  color: #FFFFFF;
+  width: 2.90rem; }
+.account-balance .balance-box .account-balance-body .pec-list .pec-list-item p {
+  font-size: 0.36rem;
+  color: #FFFFFF; }
+.account-balance .account-balance-foot {
+  font-size: 0.3rem;
+  color: #666666;
+  padding: .3rem 0;
+  height: 1.1rem;
+  background: #FFFFFF;
+  border-top: 1px solid #E7E7E7; }
+.account-balance .account-balance-foot .option-item {
+  padding: 0 .05rem;
+  text-align: center;
+  border-right: 1px solid #E7E7E7; }
+.account-balance .account-balance-foot .option-item:last-child {
+  border-right: 0; }
+
+.account-balance .balance-box.other-bank .account-balance-body .pec-list .pec-list-item {
+  min-height: .70rem;
+  padding-top: 0;
+  padding-bottom: 0; }
+.account-balance .balance-box.other-bank .account-balance-body .pec-list .pec-list-item:first-child {
+  margin-top: .20rem; }
+.account-balance .balance-box.other-bank .account-balance-body .pec-list .pec-list-item:last-child {
+  margin-bottom: .20rem; }
+
+.account-balance .balance-box.other-bank .account-balance-body .pec-list .pec-list-item .pec-item-head,
+.account-balance .balance-box.other-bank .account-balance-body .pec-list .pec-list-item p {
+  font-size: 0.3rem; }
+
+.balance-box.yellow {
+  background-image: url(../images/Account-Balance/bgYellow3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.yellow .account-balance-head p {
+  color: #e1a231; }
+
+.balance-box.diamond {
+  background-image: url(../images/Account-Balance/bgDarkGrey3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.diamond .account-balance-head p {
+  color: #292928; }
+
+.balance-box.baigold {
+  background-image: url(../images/Account-Balance/bgGray3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.baigold .account-balance-head p {
+  color: #4a4a4a; }
+
+.balance-box.gold {
+  background-image: url(../images/Account-Balance/bgGolden3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.gold .account-balance-head p {
+  color: #ffa326; }
+
+.balance-box.cunzhe {
+  background-image: url(../images/Account-Balance/bgGoldenYellow3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.cunzhe .account-balance-head p {
+  color: #eb7a12; }
+
+.balance-box.black {
+  background-image: url(../images/Account-Balance/bgBack3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.black .account-balance-head p {
+  color: #000000; }
+
+.balance-box.white {
+  background-image: none;
+  background-color: #FFFFFF; }
+.balance-box.white .account-balance-head p {
+  font-size: 0.4rem;
+  font-weight: bold;
+  color: #1E1E1E; }
+.balance-box.white .account-balance-head span {
+  color: #1E1E1E; }
+.balance-box.white .account-balance-body .pec-list .pec-list-item .pec-item-head {
+  color: #666666; }
+.balance-box.white .account-balance-body .pec-list .pec-list-item p {
+  color: #666666; }
+
+.balance-box.CreditCard {
+  background-image: url(../images/Account-Balance/bgCreditCard3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative; }
+.balance-box.CreditCard .account-balance-head p {
+  color: #eb7a12; }
+.balance-box.CreditCard .pec-list-item .pec-item-foot .money {
+  width: 100%; }
+.balance-box.CreditCard .pec-list-item .pec-item-foot .money div {
+  width: 100%; }
+.balance-box.CreditCard .pec-list-item .pec-item-foot .money div p {
+  color: #FFFFFF;
+  text-align: right; }
+.balance-box.CreditCard .pec-list-item .pec-item-foot .money div p:nth-child(2) {
+  opacity: .6; }
+
+.balance-box.other-bank .account-balance-head p {
+  font-size: 0.34rem;
+  font-weight: normal;
+  color: #666666; }
+
+.icon-arrow3 {
+  width: .16rem;
+  height: .24rem;
+  margin-left: .16rem;
+  display: inline-block;
+  background: url(../images/common/arrow-right3.svg) no-repeat;
+  background-size: .16rem .24rem;
+  vertical-align: middle;
+  margin-top: -.04rem; }
+
+.link {
+  position: absolute;
+  background: url(../images/Account-Balance/link.png) no-repeat;
+  background-size: 100% 100%;
+  width: 1.54rem;
+  height: 1.52rem;
+  display: inline-block;
+  top: -0.65rem;
+  right: -0.7rem; }
+
+.btn-addBankCard {
+  position: relative;
+  height: 1.46rem;
+  width: 100%;
+  margin-top: 0;
+  border-radius: .20rem;
+  box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.25);
+  background: #FFFFFF; }
+.btn-addBankCard i.icon-add {
+  margin-left: .40rem;
+  display: inline-block; }
+
+.add-card {
+  color: #F37938;
+  margin-top: .35rem; }
+.add-card .icon-add {
+  position: relative;
+  background: url(../images/Account-Balance/add.png);
+  background-size: 100% 100%;
+  width: 0.51rem;
+  height: 0.51rem;
+  display: inline-block;
+  margin-right: 0.35rem;
+  margin-top: 0.16rem; }
+.add-card .add-txt {
+  text-align: left; }
+.add-card .add-txt .big-p {
+  font-size: 0.3rem;
+  font-weight: bold; }
+.add-card .add-txt .small-p {
+  font-size: 0.24rem; }
+
+/*详情页*/
+.pec-list .pec-tips {
+  font-size: 0.24rem;
+  color: #B2B2B2; }
+
+.pec-list.font-28:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-top: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.pec-list.font-28 .pec-list-item {
+  font-size: 0.28rem; }
+.pec-list.font-28 .pec-list-item:nth-last-of-type(1):after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.pec-list.font-28 .pec-list-item .pec-item-head,
+.pec-list.font-28 .pec-list-item .pec-item-foot {
+  font-size: 0.28rem; }
+
+.name-blance {
+  width: 4em; }
+
+.doc {
+  background: url(../images/Account-Balance/doc.png) no-repeat;
+  background-size: 100% 100%;
+  width: 0.36rem;
+  height: 0.36rem;
+  display: inline-block;
+  margin-left: 0.1rem; }
+
+.tip-blance {
+  color: #1E1E1E;
+  font-size: 0.28rem;
+  line-height: 1.4;
+  padding: .105rem .30rem; }
+
+.rule-list {
+  position: relative; }
+.rule-list:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-top: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.rule-list .rule-box {
+  font-size: 0.28rem;
+  color: #666666;
+  padding: .3rem 0;
+  background: #FFFFFF;
+  position: relative; }
+.rule-list .rule-box:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.rule-list .rule-box li {
+  padding: 0 .15rem;
+  text-align: center; }
+.rule-list .rule-box + .rule-box {
+  color: #1E1E1E; }
+
+/*活期*/
+.curr-list {
+  background: #F37938;
+  color: #FFFFFF; }
+.curr-list .curr-list-item {
+  line-height: 1.26;
+  position: relative;
+  min-height: 0.9rem;
+  padding: 0.2rem 0.3rem;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0.3rem; }
+.curr-list .curr-list-item:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0.3rem;
+  right: 0.3rem;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #FFFFFF;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  opacity: 0.2; }
+.curr-list .curr-list-item:nth-last-of-type(1):after {
+  display: none; }
+.curr-list .curr-list-item.border-line:after {
+  left: 0;
+  right: 0; }
+.curr-list .curr-list-item.h54 {
+  padding: 0.2rem 0.3rem 0;
+  min-height: 0.54rem; }
+
+.icon-arrow-white {
+  width: .16rem;
+  height: .24rem;
+  margin-left: .16rem;
+  display: inline-block;
+  background: url("../images/common/arrow-right3.svg") no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+  margin-top: -2px; }
+
+.p-card {
+  font-size: 0.4rem;
+  color: #cb4e2a;
+  font-weight: bold; }
+
+.big-blod {
+  font-size: 0.44rem;
+  font-weight: bold; }
+
+.dian {
+  width: 0.1rem;
+  height: 0.1rem;
+  background: #FFFFFF;
+  opacity: 0.9;
+  border-radius: 0.6rem;
+  margin-right: 0.2rem;
+  display: inline-block; }
+
+.font-bold {
+  font-weight: bold; }
+
+.p-small {
+  font-size: 0.2rem;
+  margin-left: 0.3rem;
+  margin-top: 0.05rem; }
+
+.pec-margin-top5 {
+  margin-top: 0.05rem; }
+
+.curr-menu {
+  font-size: 0;
+  background: #FFFFFF;
+  overflow: hidden; }
+.curr-menu li {
+  width: 2.5rem;
+  height: 2.09rem;
+  padding: 0.5rem 0.2rem;
+  text-align: center;
+  vertical-align: top;
+  display: inline-block;
+  position: relative; }
+.curr-menu li:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #D9D9D9;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 200%;
+  transform-origin: 0 200%;
+  z-index: 1; }
+.curr-menu li:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #D9D9D9;
+  width: 1px;
+  height: 100%;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  z-index: 1; }
+.curr-menu li:nth-child(3n):before {
+  background: transparent; }
+.curr-menu li img {
+  width: 0.54rem;
+  height: 0.54rem;
+  display: inline-block; }
+.curr-menu li p {
+  margin-top: 0.15rem;
+  font-size: 0.3rem;
+  color: #666666; }
+
+.service-list {
+  padding: .3rem;
+  background: #FFFFFF;
+  font-size: 0.3rem;
+  color: #666666; }
+
+/* 底部广告位*/
+
+.padding280 {
+  padding-bottom: 2.8rem !important; }
+
+.tran-sequence-tabbar {
+  min-height: 1.10rem;
+  background: #FFFFFF;
+  position: relative; }
+.tran-sequence-tabbar:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-top: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.tran-sequence-tabbar .tran-sequence-tabbar-item {
+  padding: 0 0.3rem;
+  color: #666666;
+  font-size: 0.3rem;
+  text-align: center;
+  border-right: 1px solid #E7E7E7; }
+.tran-sequence-tabbar .tran-sequence-tabbar-item:last-child {
+  border-right: 0 !important; }
+.tran-sequence-tabbar .tran-sequence-tabbar-item p {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  width: 9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.z-index30 {
+  z-index: 30; }
+
+.border-r {
+  position: relative; }
+.border-r:after {
+  content: "";
+  position: absolute;
+  top: -0.15rem;
+  right: 0;
+  bottom: -0.2rem;
+  background: #e7e7e7;
+  width: 1px;
+  height: 190%;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  z-index: 1; }
+
+.border-t {
+  position: relative; }
+.border-t:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-top: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+
+.pec-mask3 {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000000;
+  opacity: .6; }
+
+.no-massage {
+  padding: 2.5rem 0.3rem 0;
+  text-align: center; }
+.no-massage img {
+  width: 2.48rem;
+  height: 2.66rem;
+  display: inline-block; }
+.no-massage p {
+  font-size: 0.3rem;
+  color: #B2B2B2;
+  margin-top: 0.2rem; }
+
+.tran-xq {
+  padding: 0.3rem;
+  height: 1.1rem;
+  font-size: 0.3rem;
+  background: #FFFFFF; }
+
+.tran-list {
+  background: #FFFFFF;
+  padding: 0.3rem 0; }
+.tran-list .tran-list-item {
+  line-height: 1.26;
+  position: relative;
+  min-height: 0.5rem;
+  padding-top: .10rem;
+  padding-bottom: .10rem;
+  padding-left: .30rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+.tran-list .tran-list-item .tran-item-head {
+  color: #B2B2B2;
+  font-size: 0.3rem;
+  width: 2.10rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+.tran-list .tran-list-item .tran-item-body {
+  color: #666666;
+  font-size: 0.3rem;
+  margin-right: .30rem; }
+
+.pec-list.h440 {
+  max-height: 4.4rem;
+  overflow-y: scroll; }
+
+.more {
+  font-size: 0.3rem;
+  color: #1E1E1E;
+  background: #FFFFFF;
+  text-align: center;
+  height: 0.9rem;
+  line-height: 0.9rem;
+  padding: 0 0.3rem; }
+
+.choice-time {
+  padding-right: 0.3rem;
+  width: 100%;
+  font-size: 0.3rem; }
+.choice-time li {
+  text-align: center;
+  width: 2.5rem; }
+.choice-time li:last-child {
+  width: 1.2rem; }
+.choice-time li p {
+  display: inline-block; }
+.choice-time li .icon-arrow {
+  margin: -0.03rem 0.2rem 0 0.2rem; }
+
+.adverJS-banner {
+  margin: 0 0.3rem; }
+
+.addCreditCard {
+  color: #333;
+  padding: .30rem .20rem;
+  margin-left: .30rem;
+  margin-right: .30rem;
+  background: #FFFFFF;
+  border-radius: .10rem; }
+.addCreditCard .txt {
+  color: #666666;
+  font-size: 0.26rem;
+  margin-top: .20rem; }
+
+/*工资理财*/
+.curr-list {
+  background-image: -webkit-linear-gradient(top, #f37938, #f99d43);
+  background-image: linear-gradient(top, #f37938, #f99d43);
+  color: #FFFFFF; }
+.curr-list .curr-list-item.h100 {
+  min-height: 1rem; }
+.curr-list .curr-list-item {
+  line-height: 1.26;
+  position: relative;
+  min-height: 0.9rem;
+  padding: 0.2rem 0.3rem;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0.3rem; }
+.curr-list .curr-list-item:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #FFFFFF;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  opacity: 0.2; }
+.curr-list .curr-list-item:nth-last-of-type(1):after {
+  display: none; }
+
+.p-card {
+  font-size: 0.4rem;
+  color: #cb4e2a;
+  font-weight: bold; }
+
+.big-blod {
+  font-size: 0.3rem;
+  font-weight: 900; }
+
+.set-list-head {
+  background: #FFFFFF;
+  line-height: 1.26;
+  position: relative;
+  min-height: .60rem;
+  padding: 0.1rem 0.3rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0.24rem;
+  color: #B2B2B2; }
+.set-list-head:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+
+.set-foot-list {
+  font-size: 0;
+  position: relative;
+  background: #FFFFFF; }
+.set-foot-list li:nth-child(odd):nth-last-child(2):after {
+  border: none; }
+.set-foot-list li:nth-child(even):before {
+  background: transparent; }
+.set-foot-list li:nth-last-child(1):after {
+  border: none; }
+.set-foot-list li {
+  display: inline-block;
+  width: 3.75rem;
+  height: 1.4rem;
+  position: relative;
+  overflow: hidden; }
+.set-foot-list li:after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.set-foot-list li:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #e7e7e7;
+  width: 1px;
+  height: 100%;
+  z-index: 1;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+
+.set-li-box {
+  height: 1.8rem;
+  padding: 0.3rem 0.2rem 0.1rem 0.3rem; }
+.set-li-box .set-foot-head {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-right: 0.1rem; }
+.set-li-box .set-foot-head i {
+  margin-top: -0.03rem;
+  margin-left: -0.1rem; }
+.set-li-box .set-foot-body h1 {
+  font-size: 0.3rem;
+  color: #1E1E1E;
+  position: relative; }
+.set-li-box .set-foot-body p {
+  font-size: 0.22rem;
+  color: #B2B2B2;
+  margin-top: 0.1rem; }
+
+.new-tip {
+  font-size: 0.14rem;
+  color: #ff5c5c;
+  display: inline-block;
+  position: absolute;
+  right: 1.2rem;
+  top: -0.06rem; }
+
+.bank-icon {
+  width: 0.52rem;
+  height: 0.52rem;
+  /*background: url("../images/Account-Balance/bank-4.png") no-repeat;*/
+  background-size: 100% 100%;
+  display: inline-block;
+  background-color: #FFFFFF;
+  margin-right: 0.12rem;
+  border-radius: 0.6rem;
+  overflow: hidden; }
+
+.salary-icon1,
+.salary-icon2,
+.salary-icon3,
+.salary-icon4,
+.salary-icon5,
+.salary-icon6,
+.salary-icon7,
+.salary-icon8,
+.salary-icon9,
+.salary-icon10,
+.salary-icon11,
+.salary-icon12 {
+  background: url("../images/Account-Balance/salary.png") no-repeat;
+  background-size: 0.5rem 15rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 0;
+  display: inline-block; }
+
+.salary-icon2 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -1rem; }
+
+.salary-icon3 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -2rem; }
+
+.salary-icon4 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -3rem; }
+
+.salary-icon5 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -4rem; }
+
+.salary-icon6 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -5rem; }
+
+.salary-icon7 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -6rem; }
+
+.salary-icon8 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -7rem; }
+
+.salary-icon9 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -8rem; }
+
+.salary-icon10 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -9rem; }
+
+.salary-icon11 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -10rem; }
+
+.salary-icon12 {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-position: 0 -11rem; }
+
+.advert {
+  min-height: 1.48rem;
+  padding: 0.3rem;
+  background: #FFFFFF;
+  position: relative; }
+.advert:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-bottom: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.advert:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 0;
+  border-top: 1px solid #E7E7E7;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%; }
+.advert .advert-head {
+  font-size: 0;
+  margin: 0 0.25rem 0 0.1rem; }
+.advert .advert-body p {
+  font-size: .38rem;
+  color: #1E1E1E;
+  font-weight: 700; }
+.advert .advert-body span {
+  font-size: 0.26rem;
+  color: #666666;
+  margin-top: 0.06rem;
+  display: inline-block; }
+.advert .advert-foot button {
+  background: #F37938;
+  border-radius: 0.08rem;
+  color: #FFFFFF;
+  min-width: 1.38rem;
+  height: .52rem;
+  font-size: 0.26rem;
+  padding: 0 0.1rem; }
+
+.icon-arrow-null {
+  width: .16rem;
+  height: .24rem;
+  margin-left: .16rem;
+  display: inline-block;
+  background-size: .16rem .24rem;
+  vertical-align: middle;
+  margin-top: -.04rem; }
+.icon-arrow-white-null {
+  width: .16rem;
+  height: .24rem;
+  margin-left: .16rem;
+  display: inline-block;
+  background-size: 100% 100%;
+  vertical-align: middle;
+  margin-top: -2px; }
+.aladdin-loading-content {
+  text-align: center;
+}
+
+.aladdin-loading-icon {
+  margin-left: 0 !important;
+}
+
+.pec-result {
+  background: none !important;
+}
+.currency {
+  position: absolute;
+  left: 0;
+  bottom: -.32rem;
+  font-size: 0.24rem;
+  color: #FFFFFF;
+  opacity: .6; }
+
+/*# sourceMappingURL=style.css.map */

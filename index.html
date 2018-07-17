@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-for="img in imgs">
+        <img :src="img" alt="">
+        <br>
+    </div>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        created: function () {
+        },
+        data: {
+            imgs: [
+            ]
+        }
+    });
+</script>
+</html>

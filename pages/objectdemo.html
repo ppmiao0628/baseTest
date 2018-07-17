@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class Person{
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            showName(){
+                console.log(this.name);
+            }
+        }
+        class Student extends Person{
+            constructor(name, age, grade){
+                super(name, age);
+                this.grade = grade;
+            }
+            showGrade(){
+                console.log(this.grade);
+            }
+        }
+        let stu = new Student('keller', 21, '5');
+        stu.showName();
+        console.log(stu);
+    </script>
+</body>
+</html>
