@@ -15,6 +15,21 @@ module.exports = {
         compress: false,
         port: 9000
     },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use:['file-loader']
+            }
+        ]
+    },
     plugins: [
         new cleanWebpackPlugin(['dist']),
         new htmlWebpackPlugin({
