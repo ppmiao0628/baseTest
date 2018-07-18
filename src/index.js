@@ -2,11 +2,13 @@ import _ from 'lodash';
 import printMe from './print.js';
 import './style.css';
 import './bk.jpg';
+import { cube } from './math';
 
 
 function component() {
     var element = document.createElement('div');
-    element.innerHTML = _.join(['hello', 'mpp'],' ');
+    var str = '5 cubed is '+cube(5);
+    element.innerHTML = _.join(['hello', 'mpp',str],' ');
     element.classList.add('hello');
 
     var btn = document.createElement('button');
