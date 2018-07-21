@@ -2,13 +2,14 @@ import _ from 'lodash';
 import printMe from './print.js';
 import './style.css';
 import './bk.jpg';
-import { cube } from './math';
+import {cube} from './math';
 
+console.log(process.env.NODE_ENV);
 
 function component() {
     var element = document.createElement('div');
-    var str = '5 cubed is '+cube(5);
-    element.innerHTML = _.join(['hello', 'mpp',str],' ');
+    var str = '5 cubed is ' + cube(5);
+    element.innerHTML = _.join(['hello', 'mpp', str], ' ');
     element.classList.add('hello');
 
     var btn = document.createElement('button');
@@ -17,6 +18,7 @@ function component() {
     element.appendChild(btn);
     return element;
 }
+
 let element = component();
 document.body.appendChild(element);
 
