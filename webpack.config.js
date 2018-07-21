@@ -6,12 +6,11 @@ const webpack = require('webpack');
 console.log(path.resolve(__dirname, 'dist'));
 module.exports = {
     entry: {
-        app: './src/index.js',
-        index2:'./src/index2.js'
+        app: './src/index.js'
     },
     devtool: "inline-source-map",
     devServer: {
-        contentBase:'./dist',
+        contentBase: './dist',
         hot: true,
         compress: false,
         port: 9000
@@ -27,7 +26,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
-                use:['file-loader']
+                use: ['file-loader']
             }
         ]
     },
@@ -39,20 +38,10 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    name: "commons",
-                    chunks: "initial",
-                    minChunks: 2
-                }
-            }
-        }
-    },
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    mode:"production"
+    mode: "production"
 };
