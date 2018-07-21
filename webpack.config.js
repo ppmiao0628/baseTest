@@ -6,7 +6,8 @@ const webpack = require('webpack');
 console.log(path.resolve(__dirname, 'dist'));
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index.js',
+        index2:'./src/index2.js'
     },
     devtool: "inline-source-map",
     devServer: {
@@ -35,10 +36,20 @@ module.exports = {
         new htmlWebpackPlugin({
             title: "Output Management"
         }),
-
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: "commons",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        }
+    },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
