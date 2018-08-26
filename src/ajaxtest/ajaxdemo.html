@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function loadXmlDoc() {
+            var xmlhttp ;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                console.log(xmlhttp.readyState);
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    document.getElementById('myDiv').innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET", "https://www.baidu.com/", true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+<div id="myDiv"><h2>要修改的内容</h2></div>
+<button type="button" onclick="loadXmlDoc()">修改内容</button>
+</body>
+</html>

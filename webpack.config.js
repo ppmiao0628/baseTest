@@ -6,7 +6,7 @@ const webpack = require('webpack');
 console.log(path.resolve(__dirname, 'dist'));
 module.exports = {
     entry: {
-        app: './src/index.js'
+        app: './src/index.js',
     },
     devtool: "inline-source-map",
     devServer: {
@@ -39,7 +39,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin()
     ],
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[hash].js',
         chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
