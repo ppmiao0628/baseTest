@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块化之闭包</title>
+    <script src="../../js/jsmodule/myModule.js"></script>
+</head>
+<body>
+<h1>IIFE模式：匿名函数自调用(闭包)</h1>
+<p></p>作用: 数据是私有的, 外部只能通过暴露的方法操作</p>
+<p>编码: 将数据和行为封装到一个函数内部, 通过给window添加属性来向外暴露接口</p>
+<p>问题: 如果当前这个模块依赖另一个模块怎么办?</p>
+
+<script>
+    window.myModule.bar();
+    window.myModule.foo();
+    console.log(window.myModule.data);
+    window.myModule.data = 'keller';
+    window.myModule.foo();
+</script>
+
+</body>
+</html>

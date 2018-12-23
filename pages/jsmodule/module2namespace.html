@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单对象封装</title>
+</head>
+<body>
+<h1>namespace模式 : 简单对象封装</h1>
+<p>作用: 减少了全局变量，解决命名冲突</p>
+<p>问题: 数据不安全(外部可以直接修改模块内部的数据)</p>
+<script>
+let myModule = {
+data: 'www.baidu.com',
+foo() {
+console.log(`foo() ${this.data}`)
+},
+bar() {
+console.log(`bar() ${this.data}`)
+}
+}
+myModule.data = 'other data' //能直接修改模块内部的数据
+myModule.foo() // foo() other data
+</script>
+</body>
+</html>
