@@ -6,7 +6,8 @@
     require.config({
         baseUrl: './',
         paths: {
-            myAlert: '../../js/AMD/modules/myAlert',
+            //映射: 模块标识名: 路径
+            myAlert: '../../js/AMD/modules/myAlert',//此处不能写成myAlert.js,会报错
             dataService: '../../js/AMD/modules/dataService'
         }
     })
