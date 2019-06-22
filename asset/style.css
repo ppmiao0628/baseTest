@@ -2,6 +2,9 @@
 /*账户管理*/
 /* 标签重置 */
 
+#app{
+    background-color: #B2B2B2;
+}
 
 .sqrcode {
     font-size: 0.3rem;

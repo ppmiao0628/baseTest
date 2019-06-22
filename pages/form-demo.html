@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" id="myForm">
+    <select name="location" id="selLocation">
+        <option value="shanghai">shanghai</option>
+        <option value="beijing">beijing</option>
+        <option value="guangzhou">guangzhou</option>
+        <option>shenzhen</option>
+    </select>
+    <input type="number" min="0" max="100" step="5" name="count">
+    <input type="text" size="25" maxlength="50" value="please">
+    <textarea name="textarea1" id="textarea1" cols="30" rows="10">this is textarea1</textarea>
+    <ul>
+        <li><input type="radio" name="color" value="red">Red</li>
+        <li><input type="radio" name="color" value="green">Green</li>
+        <li><input type="radio" name="color" value="blue">Blue</li>
+    </ul>
+</form>
+<form method="post"
+      action="index.html">
+    <!--<p> 名字：<input name="img" type="image" src="../src/bk.jpg"></p>-->
+    <p> 名字：<input name="name" type="text"></p>
+    <p> 密码：<input name="pass" type="password"></p>
+    <p>
+        <input type="submit" name="Button" value="提交"/>
+        <input type="reset" name="Reset" value="重填"/>
+   </p>
+</form>
+</body>
+<script>
+    let form = document.getElementById('myForm');
+    let colorFields = form.elements['color'];
+    console.log(colorFields);
+    console.log(colorFields[0]);
+    console.log(form.elements[0]);
+</script>
+</html>

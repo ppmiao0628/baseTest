@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+<body>
+<canvas id="drawing" width="1080" height="500" style="background-color: #666666;">a drawing of sth</canvas>
+</body>
+<script>
+    // let drawing = document.getElementById('drawing');
+    // let context;
+    // if (drawing.getContext) {
+    //     context = drawing.getContext('2d');
+    //     // context.fillStyle = '#00f';
+    //     // context.fillRect(0, 0, 50, 20);
+    //     // context.fillStyle = 'rgba(0,255,0,0.5)';
+    //     // context.fillRect(55, 0, 50, 20);
+    //     // context.strokeStyle = '#f00';
+    //     // context.strokeRect(0, 25, 50, 20);
+    //     // context.strokeStyle = 'rgba(225,0,0,0.5)';
+    //     // context.strokeRect(55, 25, 50, 20);
+    //     //
+    //     // context.clearRect(10,10, 10,10);
+    //
+    //     context.strokeStyle = '#000';
+    //     context.beginPath();
+    //     // 绘制外圆
+    //     context.arc(100, 100, 95, 0, 2 * Math.PI, true);
+    //     // 移动绘图游标
+    //     context.moveTo(190, 100);
+    //     // 绘制内圆
+    //     context.arc(100, 100, 90, 0, 2 * Math.PI, true);
+    //     // 绘制分针、时针
+    //     // context.moveTo(100, 100);
+    //     // context.lineTo(100, 25);
+    //     // context.moveTo(100, 100);
+    //     // context.lineTo(35, 100);
+    //     context.translate(100,100);
+    //     context.moveTo(0,0);
+    //     context.lineTo(0, -75);
+    //     context.moveTo(0,0);
+    //     context.lineTo(-65, 0);
+    //
+    //     context.font = 'bold 14px Arial';
+    //     context.textAlign = 'center';
+    //     context.textBaseline = 'middle';
+    //     // context.fillText('12', 100, 20);
+    //     context.fillText('12', 0, -80);
+    //     context.stroke();
+    //     // context.fill();
+    // }
+    function drawImage() {
+        let drawing = document.getElementById('drawing');
+        let context;
+        if (drawing.getContext) {
+            context = drawing.getContext('2d');
+            context.fillStyle = '#f00';
+            context.strokeStyle = '#f00';
+            drawing.addEventListener('touchstart', e=>{
+                let X = e.touches[0].pageX;
+                let Y = e.touches[0].pageY;
+                context.beginPath();
+                context.moveTo(X, Y);
+            });
+            drawing.addEventListener('touchmove', e=>{
+                e.preventDefault();
+                let X = e.touches[0].pageX;
+                let Y = e.touches[0].pageY;
+                context.lineTo(X, Y);
+                context.stroke();
+            });
+            drawing.addEventListener('touchend', e=>{
+            });
+            let data = context.getImageData(10,10,50,50).data;
+            console.log(data);
+        }
+    }
+    window.onload = function () {
+        drawImage();
+    };
+</script>
+</html>
