@@ -4,32 +4,70 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        class RangeIterator{
-            constructor(start, stop){
-                this.value = start;
-                this.stop = stop;
-            }
-            [Symbol.iterator](){
-                return this;
-            }
-            next() {
-                var value = this.value;
-                if(value<this.stop) {
-                    this.value++;
-                    return {done:false,value:value};
+        // class RangeIterator{
+        //     constructor(start, stop){
+        //         this.value = start;
+        //         this.stop = stop;
+        //     }
+        //     [Symbol.iterator](){
+        //         return this;
+        //     }
+        //     next() {
+        //         var value = this.value;
+        //         if(value<this.stop) {
+        //             this.value++;
+        //             return {done:false,value:value};
+        //         }
+        //         return {done:true, value:undefined};
+        //     }
+        // }
+        // function range(start, stop) {
+        //     return new RangeIterator(start, stop);
+        // }
+        // for (var value of range(0,3)) {
+        //     console.log(value);
+        // }
+        // function Polygon(side) {
+        //     if (this instanceof Polygon) {
+        //         this.sides = side;
+        //         this.getArea = function() {
+        //             return 0;
+        //         }
+        //     } else {
+        //         return new Polygon(side);
+        //     }
+        // }
+        // function Rectangle(width, height) {
+        //     Polygon.call(this, 2);
+        //     this.width = width;
+        //     this.height = height;
+        //     this.getArea = function(){
+        //         return this.width * this.height;
+        //     }
+        // }
+        // Rectangle.prototype = new Polygon();
+        // let rect = new Rectangle(5,10);
+        // console.log(rect.sides);
+        // console.log(rect.getArea());
+        function chunk(array, process, context) {
+            setTimeout(function () {
+                let item = array.shift();
+                process.call(context, item);
+                if (array.length>0) {
+                    setTimeout(arguments.callee, 1000);
                 }
-                return {done:true, value:undefined};
-            }
+            },1000)
         }
-        function range(start, stop) {
-            return new RangeIterator(start, stop);
+        let data = [12,123,1234,1234,2423,235,125,6,3421,4,5,235];
+        function printValue(item) {
+            let div = document.getElementById('myDiv');
+            div.innerHTML += item + '<br>';
         }
-        for (var value of range(0,3)) {
-            console.log(value);
-        }
+        chunk(data, printValue);
     </script>
 </head>
 <body>
+<div id="myDiv"></div>
 <img src="" alt="">
 
 </body>
