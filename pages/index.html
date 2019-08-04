@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
-        // class RangeIterator{
+        let indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB;
+        let request, database;
+        request = indexedDB.open('admin');
+        request.onerror = (event)=>{
+            alert('something wrong:'+event.target.errorCode);
+        };
+        request.onsuccess = (event)=>{
+            database = event.target.result;
+            console.log(database);
+        };
+            // class RangeIterator{
         //     constructor(start, stop){
         //         this.value = start;
         //         this.stop = stop;
@@ -63,7 +73,7 @@
             let div = document.getElementById('myDiv');
             div.innerHTML += item + '<br>';
         }
-        chunk(data, printValue);
+        // chunk(data, printValue);
     </script>
 </head>
 <body>
