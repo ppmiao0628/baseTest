@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.4.1.js"></script>
+    <script src="../js/pinchzoom.js"></script>
+</head>
+<body>
+    <div class="pinch-zoom" id="test" data-scale="1">
+        <img src="../src/bk.jpg"/>
+    </div>
+</body>
+<script>
+    $(function () {
+        $('div.pinch-zoom').each(function () {
+            new RTP.PinchZoom($(this), {});
+        });
+    });
+</script>
+<style>
+    body{
+        height: 100%;
+        width: 100%;
+        align-items: center;
+    }
+</style>
+</html>
