@@ -4,6 +4,50 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+        let arrArr = [['a1','a2'],['b1','b2']];
+        let simpleNomerlise = function (arrArr) {
+            for (let i=0,len=arrArr.length;i<len;i++){
+                if (Array.isArray(arrArr[i])){
+                    return Array.prototype.concat.apply([],arrArr);
+                }
+            }
+            return arrArr;
+        };
+        console.log(simpleNomerlise(arrArr));
+        let arr1 = ['1223','2343','8765','345','afsdf','s123df','agr23sd'];
+        let arr3 = ['1223','s123df','2343','8765','345','afsdf','32we'];
+        let arr2 = ['1223','afsdf','2343','8765','345','s123df'];
+        let status= false;
+        let arr1Str = arr1.toString();
+        for(let i=0,len=arr2.length;i<len;i++){
+            if (arr1Str.indexOf(arr2[i])===-1){
+                status = true;
+                break;
+            }
+        }
+        console.log('status'+status);
+        var name = 'widow';
+        var o = {
+            name: 'myo',
+            getName:function () {
+                return function () {
+                    return this.name;
+                }();
+            }
+        };
+        console.log(o.getName());
+        function createFunction() {
+            var result = new Array();
+            for(var i=0;i<5;i++){
+                result[i] = function (num) {
+                    return function () {
+                        return num;
+                    }();
+                }(i);
+            }
+            console.log(result);
+        }
+        createFunction();
         let book = {
             _year: 2004,
             edition: 1
@@ -24,6 +68,19 @@
         });
         book.year = 2015;
         console.log(book);
+        console.log(Object.getOwnPropertyDescriptor(book, 'year'));
+        console.log(Object.getOwnPropertyDescriptor(book, '_year'));
+        function Person() {
+
+        }
+        Person.prototype.name = 'ppm';
+        Person.prototype.age = '23';
+        Person.prototype.sayName = function () {
+            console.log(this.name);
+        };
+        let person1 = new Person();
+        console.log(Object.getOwnPropertyDescriptor(Person.prototype, 'name'));
+
         let indexedDB = window.indexedDB || window.msIndexedDB || window.mozIndexedDB || window.webkitIndexedDB;
         let request, database;
         request = indexedDB.open('admin');

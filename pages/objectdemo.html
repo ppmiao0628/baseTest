@@ -3,15 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="../js/vue217.js"></script>
 </head>
+<style>
+    .parent{
+        text-align: center;
+    }
+    .parent1{
+        display: flex;
+        justify-content: center;
+    }
+    .child{
+        display:inline-block
+    }
+    .bchild1{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .bchild2{
+        display: table;
+        margin: 0 auto;
+    }
+    .parent2{
+        position: relative;
+    }
+    .achild{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #box{
+        text-align: center;
+        height: 120px;
+        line-height: 120px;
+        border: 2px dashed #f69c55;
+    }
+</style>
 <body>
+<div class="parent">
+        利用 text-align: center 可以实现在块级元素内部的行内元素水平居中。<br>此方法对inline、inline-block、inline-table和inline-flex元素水平居中都有效。<br>
+    <div class="child" >child inline-block</div>
+</div>
+<div class="parent">
+    <div class="bchild1">child1 block</div>
+    <div class="bchild2">child2 block</div>
+</div>
+<div class="parent1">
+    <div>child3 block</div>
+    <div>child3 block</div>
+</div>
+<div class="parent2">
+    <div class="achild">child</div>
+</div>
+<div id='box'>
+    <span>单行内联元素垂直居中。</span>
+</div>
     <script type="text/javascript">
         class Person{
             constructor(name,age){
                 this.name = name;
                 this.age = age;
             }
-            showName(){
+            showName(){ 
                 console.log(this.name);
             }
         }

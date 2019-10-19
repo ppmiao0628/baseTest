@@ -28,7 +28,7 @@
 </body>
 <style type="text/css">
     .pclass1 {
-        background: #1AB55B;
+        background: rgb(87, 220, 142);
     }
 
     .pclass2 {
@@ -37,6 +37,20 @@
 </style>
 <script src="../js/vue.js"></script>
 <script>
+    function test(){
+        var blocked = false;
+        try {
+            var wroxWin = window.open('https://www.baidu.com','_blank');    
+            if(wroxWin === null) {
+                console.log('屏蔽');
+                blocked = true;
+            }
+        } catch (ex) {
+            console.log('插件屏蔽');
+            blocked = true;
+        }
+    }
+    test();
     new Vue({
         el: '#app',
         created: function () {
