@@ -1,6 +1,8 @@
 var count = 1;
 var container1 = document.getElementById('container1');
 var container2 = document.getElementById('container2');
+var container4 = document.getElementById('container4');
+var container5 = document.getElementById('container5');
 
 function getUserAction(args) {
     this.innerHTML = count++;
@@ -9,7 +11,7 @@ function getUserAction(args) {
     console.log(args);
 }
 
-
+// 防抖，疯狂点击，每次点击的时间间隔都小于规定时间，那么相应的方法不会执行
 let Debounce = function (fn, delay = 300, immediate = false) {
     let timer = null // 闭包存储setTimeout状态
     return function () {
@@ -30,6 +32,30 @@ let Debounce = function (fn, delay = 300, immediate = false) {
     }
 };
 
+// 节流函数：疯狂点击按钮，规定的时间间隔内只触发一次相应的方法
+let Throttle = function (fn, delay=1000, immediate = false) {
+    let preTime = 0;
+    return function () {
+        let self = this;
+        let args = [...arguments];
+        let nowTime = + new Date();
+        let flag = nowTime - preTime >= delay;
+        if (immediate) {
+            if (!flag) return;
+            preTime = nowTime;
+            fn.apply(self, args);
+        } else {
+            if (!flag) return;
+            preTime = nowTime;
+            setTimeout(()=>{
+                fn.apply(self, args);
+                flag = true;
+            },delay);
+        }
+
+    }
+}
+
 var person = function () {
     var name = 'keller';
     return {
@@ -39,5 +65,7 @@ var person = function () {
     }
 }();
 
-container1.onmousemove = debounce(getUserAction, 300);
-container2.onmousemove = debounce(getUserAction, 300,true);
+container1.onmousemove = Debounce(getUserAction, 300);
+container2.onmousemove = Debounce(getUserAction, 300, true);
+container4.onmousemove = Throttle(getUserAction);
+container5.onmousemove = Throttle(getUserAction,1000, true);
