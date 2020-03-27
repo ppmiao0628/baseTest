@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+//         所谓的深拷贝，要实现的效果是不管对象或数组里面嵌套了多少层引用类型，都能拷贝出来，而非只拷贝它的引用
+//         要实现深拷贝的方法常用有一下方法：
+// 1、JSON.parse、JSON.stringify
+//         let obj2 = JSON.parse(JSON.stringify(obj1))
+//         复制代码缺点：undefined、function、symbol 会在转换过程中被忽略
+
+        // let ppm = {
+        //     name:'ppm',
+        //     sayName: function(){
+        //         console.log(this.name);
+        //     },
+        //     feature:{
+        //         year:2019,
+        //         base:'深圳'
+        //     },
+        //     education:[
+        //         {
+        //             time:1997,
+        //             base:'handan'
+        //         },
+        //         {
+        //             time:undefined,
+        //             base:'xian'
+        //         }
+        //     ]
+        // };
+        // console.log(ppm);
+        // let ppmCopy = JSON.parse(JSON.stringify(ppm));
+        // console.log(ppmCopy);
         let arrArr = [['a1','a2'],['b1','b2']];
         let simpleNomerlise = function (arrArr) {
             for (let i=0,len=arrArr.length;i<len;i++){
