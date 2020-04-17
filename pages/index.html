@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
+        Function.prototype.callCopy = function(ctx){
+            const context = ctx || window;
+            context.fn = this;
+            let args = [];
+            for (let i=1;i<arguments.length;i++){
+                args.push('arguments['+i+']');
+            }
+            let result = eval('context.fn('+ args +')');
+            delete context.fn;
+            return result;
+        };
+        var value = 2;
+
+        var obj = {
+            value: 1
+        }
+
+        function bar(name, age) {
+            console.log(this.value);
+            return {
+                value: this.value,
+                name: name,
+                age: age
+            }
+        }
+
+        // bar.callCopy(null); // 2
+        console.log(bar.callCopy(obj, 'kevin', 18));
 //         所谓的深拷贝，要实现的效果是不管对象或数组里面嵌套了多少层引用类型，都能拷贝出来，而非只拷贝它的引用
 //         要实现深拷贝的方法常用有一下方法：
 // 1、JSON.parse、JSON.stringify
