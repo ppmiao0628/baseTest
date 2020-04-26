@@ -1,11 +1,13 @@
 {
+  "type": "module",
+  "exports":"./ES6/aa.mjs",
   "name": "baseTest",
   "sideEffects": [
     "*.css"
   ],
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  // "main": "server.js",
   "scripts": {
     "testbabel": "babel src -d lib",
     "test": "echo \"Error: no test specified\" && exit 1",
