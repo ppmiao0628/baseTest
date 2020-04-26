@@ -1,0 +1,39 @@
+{
+  "data": {
+    "list": [
+      {
+        "wordName": "本人往来"
+      },
+      {
+        "wordName": "定期存款"
+      },
+      {
+        "wordName": "其他收入"
+      },
+      {
+        "wordName": "基金理财"
+      },
+      {
+        "wordName": "其他支出"
+      },
+      {
+        "wordName": "转给他人"
+      },
+      {
+        "wordName": "信"
+      },
+      {
+        "wordName": "转"
+      },
+      {
+        "wordName": "转出"
+      },
+      {
+        "wordName": "外汇"
+      }
+    ],
+    "total": 10
+  },
+  "responseCode": "000000",
+  "responseMsg": "success"
+}

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试sort</title>
+    <script src="vue.js"></script>
+    <script src="moment.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>金额展示{{amountObj | }}</div>
+    <div class="div-item" v-for="i in arr">{{i.data}}</div>
+</div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                bigDataParams: {
+                    pageNo: 1, // 页码
+                    pageSize: 20, // 每页数量
+                    wheres: []
+                },
+                options: {
+                    params: {
+                        acctNoSign: '',
+                        jsonParam: []
+                    }
+                },
+                arr: []
+            }
+        },
+        created() {
+            let arr = ["8D76F88E72D00096E0531D03D1ABB2C2", "8D73C3FDB683003EE0531D03D1AB6960", "8D77C90EADFD00BCE0531D03D1ABA5F1", "8D78BB7C6CB200AAE0531D03D1AB9583", "8D79E2ECE6C60062E0531D03D1AB23A7", "8D7A8A876FAE0042E0531D03D1AB4F40", "8F599A315617007CE0531D03D1ABF674", "900286073C9200A8E0531D03D1AB0E74", "9032D3C116F200B8E0531D03D1ABAC82", "91CBC04E63F70034E0531D03D1AB66B8", "92523EBC88ED00DEE0531D03D1ABA1FE"];
+            let arr1 = ["8D76F88E72D00096E0531D03D1ABB2C2", "8D73C3FDB683003EE0531D03D1AB6960", "8D77C90EADFD00BCE0531D03D1ABA5F1", "8D78BB7C6CB200AAE0531D03D1AB9583", "8D79E2ECE6C60062E0531D03D1AB23A7", "8D7A8A876FAE0042E0531D03D1AB4F40", "8F599A315617007CE0531D03D1ABF674", "900286073C9200A8E0531D03D1AB0E74", "9032D3C116F200B8E0531D03D1ABAC82", "91CBC04E63F70034E0531D03D1AB66B8",'23'];
+            arr1.forEach(item=>{
+                console.log(arr.includes(item));
+            });
+            // console.log(arr.toString());
+            // console.log(arr.sort().toString());
+            // console.log(arr.toString()===arr.sort().toString());
+            this.options.params.jsonParam = JSON.stringify(this.bigDataParams);
+            let {params}  = this.options;
+            let bigDataParams = {
+                pageNo: JSON.parse(this.options.params.jsonParam).pageNo + 1, // 页码 ++
+                pageSize: JSON.parse(this.options.params.jsonParam).pageSize, // 每页数量
+                wheres: JSON.parse(this.options.params.jsonParam).wheres
+            };
+            if (this.options.referer === 'home') {
+                let whereParam = [
+                    {
+                        key: 'transMonth',
+                        operation: '=',
+                        value: '2019-01'
+                    },
+                    {
+                        key: 'skip',
+                        operation: '=',
+                        value: 30
+                    }
+                ];
+                bigDataParams.wheres = whereParam;
+            }
+            let routeParams = {
+                acctNoSign: this.options.params.acctNoSign,
+                acctType: this.options.params.acctType,
+                actionName: this.options.params.actionName,
+                bankCardSign: this.options.params.bankCardSign,
+                cardType: this.options.params.cardType,
+                jsonParam: JSON.stringify(bigDataParams)
+            };
+            params = routeParams;
+            this.options.params = routeParams;
+            console.log(params);
+            console.log(this.options.params);
+            let str = '2019年04月';
+            let curYear = Number(new Date().getFullYear());
+            let curMonth = Number(new Date().getMonth() + 1);
+            if (Number(str.slice(0, 4)) === curYear && Number(str.slice(5, 7)) === curMonth) {
+                console.log('本月');
+            }
+            let self = this;
+            let lists = [
+                {
+                    data: 'ka1',
+                    acctWeight: 1,
+                    clickTime: 1,
+                    weight: 1
+                },
+                {
+                    data: 'ka2',
+                    acctWeight: 2,
+                    clickTime: 2,
+                    weight: 1
+                },
+                {
+                    data: 'zhang1',
+                    acctWeight: 3,
+                    clickTime: 3,
+                    weight: 1
+                },
+                {
+                    data: 'zk1',
+                    acctWeight: 3,
+                    clickTime: 2,
+                    weight: 1
+                },
+                {
+                    data: 'zk2',
+                    acctWeight: 3,
+                    clickTime: 1,
+                    weight: 1
+                }
+            ];
+            let lists2 = [
+                {
+                    data: 'ka1',
+                    acctWeight: 1,
+                    clickTime: 1,
+                    list: [
+                        {
+                            data: 'ka11'
+                        },
+                    ],
+                    weight: 1
+                },
+                {
+                    data: 'zk1',
+                    acctWeight: 3,
+                    clickTime: 2,
+                    weight: 1
+                },
+                {
+                    data: 'zhang1',
+                    acctWeight: 3,
+                    clickTime: 3,
+                    weight: 1
+                },
+                {
+                    data: 'ka2',
+                    acctWeight: 2,
+                    clickTime: 2,
+                    weight: 1
+                },
+                {
+                    data: 'zk2',
+                    acctWeight: 3,
+                    clickTime: 1,
+                    weight: 1
+                }
+            ];
+            // let payCardList = JSON.parse("[{\"accountFlag\":\"1\",\"bankCardMask\":\"6230*****9855\",\"bankCardNo\":\"6230582000036819855\",\"bankCardSign\":\"423af571fdda14e847df58321f4c3a2a\"},{\"accountFlag\":\"1\",\"bankCardMask\":\"6230*****1287\",\"bankCardNo\":\"6230580000072181287\",\"bankCardSign\":\"ae304223238a8116d10a0956a47620a9\"},{\"accountFlag\":\"3\",\"bankCardMask\":\"6222*****3334\",\"bankCardNo\":\"6222981473743334\",\"bankCardSign\":\"b98f4a745e0c12af895916f288acc132\"}]");
+            // let receiptCardList = JSON.parse("[{\"accountFlag\":\"991\",\"creditCardAccountNumMask\":\"6230*****9855\",\"creditCardList\":[{\"creditCardMask\":\"6230*****1287\",\"creditCardSign\":\"ae304223238a8116d10a0956a47620a9\"},{\"creditCardMask\":\"6230*****1287\",\"creditCardSign\":\"ae304223238a8116d10a0956a47620a9\"}],\"creditCardAccountNumSign\":\"423af571fdda14e847df58321f4c3a2a\"},{\"accountFlag\":\"992\",\"creditCardAccountNumMask\":\"6230*****1287\",\"creditCardList\":[{\"creditCardMask\":\"6230*****1287\",\"creditCardSign\":\"ae304223238a8116d10a0956a47620a9\"}],\"bankCardSign\":\"ae304223238a8116d10a0956a47620a9\"},{\"accountFlag\":\"995\",\"creditCardAccountNumMask\":\"6222*****3334\",\"creditCardList\":[],\"creditCardAccountNumSign\":\"b98f4a745e0c12af895916f288acc132\"}]")
+
+            let payCardList = [
+                {
+                    "maskSub": "9855",
+                    "title": "平安储蓄卡(9855)",
+                    "bankCardSign": "423af571fdda14e847df58321f4c3a2a",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 0,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 1
+                },
+                {
+                    "maskSub": "1287",
+                    "title": "平安储蓄卡(1287)",
+                    "bankCardSign": "ae304223238a8116d10a0956a47620a9",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 0,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 1
+                },
+                {
+                    "maskSub": "3334",
+                    "title": "平安互联网账户(3334)",
+                    "bankCardSign": "b98f4a745e0c12af895916f288acc132",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 0,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 3
+                },
+                {
+                    "maskSub": "7110",
+                    "title": "口袋钱包(7110)",
+                    "bankCardSign": "d273a5894657e49eb1e6da0fd70251e2",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 0,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 4
+                }
+            ];
+
+            let receiptCardList = [
+                {
+                    "maskSub": "1500",
+                    "title": "个人信用卡账户",
+                    "bankCardSign": "e9a1cd003e8fe7d380fab9736055110e",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 0,
+                    "acctCardFlag": "2",
+                    "acctWeight": 5,
+                    "creditCardList": [
+                        {
+                            "maskSub": "1658",
+                            "title": "个人信用卡(1658)",
+                            "bankCardSign": "ea2474da81bf262b94af17345d82cf29",
+                            "iconHead": "",
+                            "showIncome": false,
+                            "checked": false,
+                            "clickTimes": 0,
+                            "acctCardFlag": "3"
+                        },
+                        {
+                            "maskSub": "8232",
+                            "title": "个人信用卡(8232)",
+                            "bankCardSign": "5e675909c338cca2357343b3579c4108",
+                            "iconHead": "",
+                            "showIncome": false,
+                            "checked": false,
+                            "clickTimes": 0,
+                            "acctCardFlag": "3"
+                        },
+                        {
+                            "maskSub": "2247",
+                            "title": "个人信用卡(2247)",
+                            "bankCardSign": "95839e4e1751314bb1869c5ff3e387c6",
+                            "iconHead": "",
+                            "showIncome": false,
+                            "checked": false,
+                            "clickTimes": 0,
+                            "acctCardFlag": "3"
+                        },
+                        {
+                            "maskSub": "0081",
+                            "title": "个人信用卡(0081)",
+                            "bankCardSign": "9b04a10662918108cb23d8e6189d51a7",
+                            "iconHead": "",
+                            "showIncome": false,
+                            "checked": false,
+                            "clickTimes": 0,
+                            "acctCardFlag": "3"
+                        },
+                        {
+                            "maskSub": "9601",
+                            "title": "个人信用卡(9601)",
+                            "bankCardSign": "3a8dbc65eb71ee775c5b12df4fa48c0c",
+                            "iconHead": "",
+                            "showIncome": false,
+                            "checked": false,
+                            "clickTimes": 0,
+                            "acctCardFlag": "3"
+                        }
+                    ]
+                }
+            ];
+
+            let localStorageCardLists = [
+                {
+                    "maskSub": "9855",
+                    "title": "平安储蓄卡(9855)",
+                    "bankCardSign": "423af571fdda14e847df58321f4c3a2a",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 3,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 1
+                },
+                {
+                    "maskSub": "1287",
+                    "title": "平安储蓄卡(1287)",
+                    "bankCardSign": "ae304223238a8116d10a0956a47620a9",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 3,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 1
+                },
+                {
+                    "maskSub": "3334",
+                    "title": "平安互联网账户(3334)",
+                    "bankCardSign": "b98f4a745e0c12af895916f288acc132",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 3,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 3
+                },
+                {
+                    "maskSub": "7110",
+                    "title": "口袋钱包(7110)",
+                    "bankCardSign": "d273a5894657e49eb1e6da0fd70251e2",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": true,
+                    "checked": false,
+                    "clickTimes": 4,
+                    "acctCardFlag": "1",
+                    "creditCardList": [ ],
+                    "acctWeight": 4
+                },
+                {
+                    "maskSub": "1500",
+                    "title": "个人信用卡账户",
+                    "bankCardSign": "e9a1cd003e8fe7d380fab9736055110e",
+                    "iconHead": "../assets/images/icon-bank-pa.png",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 10,
+                    "acctCardFlag": "2",
+                    "acctWeight": 5,
+                    "creditCardList": []
+                },
+                {
+                    "maskSub": "1658",
+                    "title": "个人信用卡(1658)",
+                    "bankCardSign": "ea2474da81bf262b94af17345d82cf29",
+                    "iconHead": "",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 2,
+                    "acctCardFlag": "3"
+                },
+                {
+                    "maskSub": "8232",
+                    "title": "个人信用卡(8232)",
+                    "bankCardSign": "5e675909c338cca2357343b3579c4108",
+                    "iconHead": "",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 2,
+                    "acctCardFlag": "3"
+                },
+                {
+                    "maskSub": "2247",
+                    "title": "个人信用卡(2247)",
+                    "bankCardSign": "95839e4e1751314bb1869c5ff3e387c6",
+                    "iconHead": "",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 3,
+                    "acctCardFlag": "3"
+                },
+                {
+                    "maskSub": "0081",
+                    "title": "个人信用卡(0081)",
+                    "bankCardSign": "9b04a10662918108cb23d8e6189d51a7",
+                    "iconHead": "",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 2,
+                    "acctCardFlag": "3"
+                },
+                {
+                    "maskSub": "9601",
+                    "title": "个人信用卡(9601)",
+                    "bankCardSign": "3a8dbc65eb71ee775c5b12df4fa48c0c",
+                    "iconHead": "",
+                    "showIncome": false,
+                    "checked": false,
+                    "clickTimes": 1,
+                    "acctCardFlag": "3"
+                }
+            ];
+            let payCardListLen = payCardList.length;
+            let receiptCardListLen = receiptCardList.length;
+            for (let i = 0; i < payCardListLen; i++) {
+                // 记录完所有借记卡的点击次数；
+                for (let j = 0; j < localStorageCardLists.length; j++) {
+                    if (localStorageCardLists[j].acctCardFlag === '1' && payCardList[i].bankCardSign === localStorageCardLists[j].bankCardSign) {
+                        payCardList[i].clickTimes = localStorageCardLists[j].clickTimes;
+                        // localStorageCardLists.splice(j, 1);  //从本地数组中删除掉该数据，减少循环
+                        // j--;
+                        break;
+                    }
+                }
+            }
+            for (let i = 0; i < receiptCardListLen; i++) {
+                // 记录完信用账户和信用卡的点击次数；
+                for (let j = 0; j < localStorageCardLists.length; j++) {
+                    if (localStorageCardLists[j].acctCardFlag === '2' && receiptCardList[i].bankCardSign === localStorageCardLists[j].bankCardSign) {
+                        receiptCardList[i].clickTimes = localStorageCardLists[j].clickTimes;
+                        // localStorageCardLists.splice(j, 1);
+                        // break;
+                    } else if (localStorageCardLists[j].acctCardFlag === '3') {
+                        // 信用卡获取点击次数
+                        for (let k = 0; k < receiptCardList[i].creditCardList.length; k++) {
+                            if (receiptCardList[i].creditCardList[k].bankCardSign === localStorageCardLists[j].bankCardSign) {
+                                receiptCardList[i].creditCardList[k].clickTimes = localStorageCardLists[j].clickTimes;
+                                // localStorageCardLists.splice(j, 1);
+                                // j--; // 这里是需要j--的
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            // 信用账户局部排序，然后借记信用整体排序。
+            for (let i = 0; i < receiptCardListLen; i++) {
+                receiptCardList[i].creditCardList.sort((a,b)=>{
+                    if (a.clickTimes === b.clickTimes) {
+                        return Number(a.maskSub) - Number(b.maskSub);
+                    } else {
+                        return b.clickTimes - a.clickTimes;
+                    }
+                });
+            }
+            console.log(receiptCardList);
+            let combinedList = payCardList.concat(receiptCardList);
+            console.log(combinedList);
+            combinedList.sort((a,b)=>{
+                if (a.clickTimes === b.clickTimes) {
+                    if (a.acctWeight === b.acctWeight) {
+                        return a.maskSub - b.maskSub;
+                    } else {
+                        return a.acctWeight - b.acctWeight;
+                    }
+                } else {
+                    return b.clickTimes - a.clickTimes;
+                }
+            });
+            console.log(combinedList);
+            let combinedListLen = combinedList.length;
+            let newCombinedList = [];
+            for (let i=0;i<combinedListLen;i++){
+                newCombinedList.push(combinedList[i]);
+                if (combinedList[i].creditCardList) {
+                    newCombinedList.push(...combinedList[i].creditCardList);
+                }
+            }
+            console.log(newCombinedList);
+        },
+        methods: {
+            sortFun(a, b) {
+                if (Number(a.clickTime) > Number(b.clickTime)) {
+                    return -1;
+                } else if (Number(a.clickTime) < Number(b.clickTime)) {
+                    return 1;
+                } else {
+                    if (Number(a.acctWeight) > Number(b.acctWeight)) {
+                        return -1
+                    } else if (Number(a.acctWeight) <= Number(b.acctWeight)) {
+                        return 1
+                    }
+                }
+            },
+        }
+    })
+</script>
+<style>
+    .div-item {
+        height: 2rem;
+        width: 100%;
+        background-color: #aaaa00;
+    }
+
+    .div-btn {
+        height: 3rem;
+        width: 40%;
+        align-content: center;
+        align-items: center;
+        background-color: #0bb;
+    }
+</style>
+</html>

@@ -45,5 +45,9 @@
     "core-js": "^3.6.4",
     "flow-bin": "^0.108.0",
     "koa2": "^2.0.0-alpha.7"
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "eslint": "^6.6.0",
+    "eslint-plugin-vue": "^5.2.3"
   }
 }
