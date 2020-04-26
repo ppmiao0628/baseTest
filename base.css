@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+* {box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;word-wrap: break-word;word-break: break-word;}
+body, dl, dd, ul, ol, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, hr, button, menu {margin: 0;padding: 0;}
+article, aside, details, footer, header, menu, nav, section, iframe {display: block;}
+iframe, fieldset, img, button {border: 0;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight: normal;}
+table {border-collapse: collapse;border-spacing: 0;}
+em, i {font-style: normal;}
+ul, ol, li, summary {list-style: none;}
+a, a:active, a:hover {text-decoration: none;}
+html, body, button {-webkit-text-size-adjust: none;}
+button, input, select, textarea {-webkit-appearance: none;}
+a, button, input, textarea {-webkit-tap-highlight-color: transparent;}
+mark {background-color: transparent;}
+i, em {font-style: normal;}
+img {max-width: 100%;border: none;vertical-align: middle;}
+input, button, select, textarea, button:focus, input:focus, textarea:focus, select:focus, a:focus, li:focus, span:focus, i:focus, img:focus, summary {outline: 0;}
+body { font-family: 'PingFang SC', 'Droid Sans', "HelveticaNeue", "Helvetica Neue", arial, sans-serif;-webkit-user-select: none;-webkit-overflow-scrolling: touch;}
+.clearfix:after {content: "";display: block;height: 0;clear: both;visibility: hidden;}
+.lower-zindex {z-index: 1!important;}

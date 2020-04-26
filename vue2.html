@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue2.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3 v-text="showUA"></h3>
+    <!--<div>金额{{amountObj | dcPrice('transAmount', 'dcFlag')}}</div>-->
+    <!--<div>金额{{formatNumber(amountObj.transAmount)}}</div>-->
+    <!--&lt;!&ndash;<div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div>{{obj.a}}</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div>{{obj.b}}</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div style="height: 30px;background-color: goldenrod;" v-for="(value,$index) in arr"&ndash;&gt;-->
+         <!--&lt;!&ndash;@click="clickItem($index,$event)"> {{value}}&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div style="height: 1px;"></div>&ndash;&gt;-->
+    <!--<div style="background-color: goldenrod;" v-for="value in monthTotalLists">-->
+        <!--{{value.month}}-->
+        <!--<div v-for="list in value.transDataList" >{{list.transTitle}}</div>-->
+    <!--</div>-->
+    <!--<div style="height: 1px;"></div>-->
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            showUA:'',
+            // obj: {
+            //     a: '0',
+            //     b: '1'
+            // },
+            amountObj:{},
+            monthTotalLists: []
+            // arr: [1, 2, 3, 4, 5, 6, 7, 8]
+        },
+        mounted() {
+            this.showUA = navigator.userAgent;
+            this.amountObj = {
+                dcFlag:'D',
+                transAmount: '-102.38'
+            };
+            let data1 = [
+                {
+                    month: '2019-03',
+                    transDataList: [
+                        {
+                            transTitle: '2019-03-01'
+                        },
+                        {
+                            transTitle: '2019-03-02'
+                        },
+                        {
+                            transTitle: '2019-03-03'
+                        },
+                        {
+                            transTitle: '2019-03-04'
+                        }
+                    ]
+                },
+                {
+                    month: '2019-02',
+                    transDataList: [
+                        {
+                            transTitle: '2019-02-01'
+                        },
+                        {
+                            transTitle: '2019-02-02'
+                        },
+                        {
+                            transTitle: '2019-02-03'
+                        },
+                        {
+                            transTitle: '2019-02-04'
+                        }
+                    ]
+                }
+            ];
+            let data2 = [
+                {
+                    month: '2019-02',
+                    transDataList: [
+                        {
+                            transTitle: '2019-02-05'
+                        },
+                        {
+                            transTitle: '2019-02-06'
+                        },
+                        {
+                            transTitle: '2019-02-07'
+                        },
+                        {
+                            transTitle: '2019-02-08'
+                        }
+                    ]
+                },
+                {
+                    month: '2019-01',
+                    transDataList: [
+                        {
+                            transTitle: '2019-01-01'
+                        },
+                        {
+                            transTitle: '2019-01-02'
+                        },
+                        {
+                            transTitle: '2019-01-03'
+                        },
+                        {
+                            transTitle: '2019-01-04'
+                        }
+                    ]
+                }
+            ];
+            this.getDefaultMonthTransLists(data1);
+            this.getDefaultMonthTransLists(data2);
+            console.log(this.monthTotalLists);
+            let data = [
+                {
+                    creditTransAmount: '1000',
+                    debitTransAmount: '349812312000',
+                    month: '2019-03',
+                    transDataList: [
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        },
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        },
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        },
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        }
+                    ]
+                },
+                {
+                    creditTransAmount: '100340',
+                    debitTransAmount: '349234312000',
+                    month: '2019-02',
+                    transDataList: [
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        },
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        },
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        },
+                        {
+                            transTitle: '支付宝-黄焖鸡米饭黄焖鸡米饭',
+                            transCategoryName: '日常餐饮',
+                            cardType: '1',
+                            bankCardMask: '3483****3764',
+                            transTime: '2019-03-04 17:26:40',
+                            dcFlag: 'C',
+                            transAmount: '1838481276743',
+                            acctBal: '28734',
+                            transCategoryId: ''
+                        }
+                    ]
+                }
+            ];
+        },
+        methods: {
+            formatNumber: function(num, cent = 2, isThousand = 1) {
+                cent = typeof cent === 'number' ? cent : 2;
+                var number = num === undefined ? '0.00' : num.toString().replace(/\$|,|\+/g, '');
+                // 非数字
+                var sign = number.indexOf('-') === -1; // 正负符号
+                var cents = ''; // 小数部分
+                if (isNaN(number) || number === '0.' || number === '' || Number(num) === 0) {
+                    for (var n = 0; n < cent; n++) {
+                        cents += '0';
+                    }
+                    number = cent ? '0.' + cents : '0';
+
+                    return number;
+                }
+
+                // var newExp=RegExp('0{'+cent+'}$','g');  正则动态匹配重复值
+                var cents2 = 0; // 四舍五入后的小数
+                var newExp = /\.$/; // 点结尾
+                var newExp1 = /^0+(?!\.)/; // 零开头
+                var newExp2 = /^\./; // 点开头
+                var newExp3 = /^-?\d+$/; // 正负整数
+                if (newExp.test(number)) {
+                    number = number.replace(newExp, '');
+                }
+                if (newExp1.test(number)) {
+                    number = number.replace(newExp1, '');
+                }
+                if (newExp2.test(number)) {
+                    number = '0' + number;
+                }
+
+                if (newExp3.test(number)) {
+                    for (var o = 0; o < cent; o++) {
+                        cents += '0';
+                    }
+                    // 整数-用于光标失去时
+                } else {
+                    cents2 = Number('0.' + number.split('.')[1]).toFixed(cent); // 四舍五入后的小数
+                    cents = cents2.replace(/^\d*./g, ''); // 纯小数部分
+                    number = parseInt(parseInt(number) + Number(sign ? cents2 : -cents2)).toString(); // 小数有可能进一位
+                }
+
+                number = number.replace(/-/g, '');
+                if (isThousand) {
+                    // 对整数部分进行千分位格式化.
+                    for (var i = 0; i < Math.floor((number.length - (1 + i)) / 3); i++) {
+                        number =
+                            number.substring(0, number.length - (4 * i + 3)) +
+                            ',' +
+                            number.substring(number.length - (4 * i + 3));
+                    }
+                }
+                if (cent > 0) {
+                    return (sign ? '' : '-') + number + '.' + cents;
+                } else {
+                    return number === '0' ? number : (sign ? '' : '-') + number;
+                }
+            },
+            clickItem(i, e) {
+                console.log(i);
+                console.log(e);
+                let time = setTimeout(() => {
+                    this.obj.a = '9';
+                    this.obj.b = '9';
+                }, 2000)
+            },
+            getDefaultMonthTransLists(data) {
+                let self = this;
+                let monthObjList = data;
+                let monthObjListLen = data.length;
+                let tempMonThObjList = [];
+                for (let i = 0; i < monthObjListLen; i++) {
+                    let tempMonThObj = {};
+                    tempMonThObj.month = monthObjList[i].month; //当月
+                    let monthTransList = monthObjList[i].transDataList;
+                    let monthTransListLen = monthObjList[i].transDataList.length;
+                    let tempMonthTranList = [];
+                    for (let j = 0; j < monthTransListLen; j++) {
+                        let tempObj = {};
+                        tempObj.transTitle = monthTransList[j].transTitle;
+                        tempMonthTranList.push(tempObj);
+                    }
+                    tempMonThObj.transDataList = tempMonthTranList;
+                    tempMonThObjList.push(tempMonThObj);
+                }
+                if (!self.monthTotalLists.length) {
+                    self.monthTotalLists = tempMonThObjList;
+                } else {
+                    if (tempMonThObjList[0].month === self.monthTotalLists[self.monthTotalLists.length - 1].month) {
+                        self.monthTotalLists[self.monthTotalLists.length - 1].transDataList.push(...tempMonThObjList.shift().transDataList);
+                        // tempMonThObjList.shift();
+                    }
+                    self.monthTotalLists.push(...tempMonThObjList);
+                }
+
+            },
+        },
+        filters: {
+            dcPrice(value, transAmoutField, dcFlagField) {
+                const FLAGS = {
+                    C: '+',
+                    D: '-'
+                };
+                let transAmount = value[transAmoutField],
+                    dcFlag = value[dcFlagField],
+                    symbol = '+';
+
+                if (transAmount === undefined) {
+                    return '';
+                }
+
+                if (Number(transAmount) === 0) {
+                    return '0';
+                }
+
+                transAmount = Number(transAmount) + '';
+
+                if (transAmount.indexOf('-') !== -1) {
+                    if (dcFlag && dcFlag.toUpperCase() === 'D') {
+                        symbol = FLAGS.C;
+                    }
+                    else {
+                        symbol = FLAGS.D;
+                    }
+                }
+                else if(dcFlag && dcFlag.toUpperCase() === 'D') {
+                    symbol = FLAGS.D;
+                }
+                let sp = transAmount.toString().split('.'),
+                    intNum = sp[0].toString().replace(/(?=((?!\b)\d{3})+$)/g, ','),
+                    floatNum = sp.length > 1 ? (sp[1] + '0').substr(0, 2) : '00';
+                transAmount = `${intNum}.${floatNum}`;
+                return symbol + transAmount.replace(/^-/, '');
+            }
+        }
+    })
+</script>
+</body>
+</html>

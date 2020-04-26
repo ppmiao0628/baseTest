@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试循环push</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <textarea ̰
+                id="userRemarkText"
+                maxlength="120"
+                class="remark-inp2 needsfocus"
+                @blur="textareaBlur"
+                placeholder="记录生活点点滴滴..."
+        ></textarea>
+        <div>
+            <p class="pec-fs-30" v-text="source.transTitle">sd</p>
+        </div>
+        <div class="div-btn" @click="startPush">start</div>
+        <div class="div-item" v-text="i" v-for="i in arr" ></div>
+        <div class="search-box">
+            <div class="search-inp">
+                <input class="s-input" id="searchKey" name="" placeholder="请输入关键字进行查询" v-model="keyWord"
+                       @keyup.enter="inputSearch()" @focus="inputFocus" @blur="inputBlur">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                source: {
+                    transTitle: 'ksjkajk      '
+                },
+                keyWord: 'keller',
+                arr: []
+            }
+        },
+        watch: {
+            keyWord: function() {
+                let self = this;
+
+                let regExp = /[^\u4e00-\u9fa5\w]/g;
+                if (regExp.test(this.keyWord) || this.keyWord.length > 30) {
+                    // 如果有特殊字符，则不触发联想
+                    this.keyWord = this.keyWord.replace(/[^\u4e00-\u9fa5\w]/g, ''); // 去掉所有符号
+                    if (this.keyWord.length > 30) {
+                        this.keyWord = this.keyWord.slice(0, 30);
+                        //  self.showAlert('关键词太长，请重新输入');
+                    }
+                    return;
+                }
+
+                if (self.keyWord.length > 0) {
+                    self.searchAssociate(); //查询联想
+                } else {
+                    self.isShowAssociate = false;
+                }
+            }
+        },
+        mounted() {
+            this.pushNum();
+        },
+        methods: {
+            textareaBlur(evt) {
+                console.log(evt.target.value);
+                console.log(event.target == document.getElementById('userRemarkText'));
+                let value = document.getElementById('userRemarkText').value;
+
+                console.log(value);
+            },
+            inputSearch(){},
+            inputFocus(){},
+            inputBlur(){},
+            searchAssociate(){
+                console.log('联想---');
+            },
+            startPush() {
+                this.arr = [];
+                let i = 0;
+                let inter = setInterval(()=>{
+                    this.arr.push(i++);
+                    if (i>5) {
+                        clearInterval(inter);
+                    }
+                },100);
+
+            }
+        }
+    })
+</script>
+<style>
+    .div-item {
+        height: 2rem;
+        width: 100%;
+        background-color: #aaaa00;
+    }
+    .div-btn {
+        height: 3rem;
+        width: 40%;
+        align-content: center;
+        align-items: center;
+        background-color: #0bb;
+    }
+</style>
+</html>
