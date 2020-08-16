@@ -62,3 +62,19 @@ function f(a,cb) {
 }
 let cf = Thunk(f);
 cf(1)(console.log)
+
+function run(fn) {
+    var gen = fn();
+    function next(err, data) {
+        var result = gen.next(data);
+        if(result.done) return;
+        result.value(next)
+    }
+    next();
+}
+function* g() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+run(g);
