@@ -14,44 +14,56 @@
     <div id="title">title</div>
     <div>
         选择文件(可多选)
-        <input type="file" id="file" multiple>
+        <input type="file" id="f1" multiple>
         <br>
         <br>
         <button type="button" id="submit">上传</button>
     </div>
-    <script>
-        function upload() {
-            var fileList = document.getElementById('file').files;
-            console.log(fileList);
-            if(!fileList.length){
-                alert('no file to upload')
-                return;
-            }
-            var fd = new FormData();   //构造FormData对象
-        // fd.append('title', document.getElementById('title').value);
+    
+<script>
+    function submitUpload() {
+        //获得文件列表，注意这里不是数组，而是对象
+        var fileList = document.getElementById('f1').files;
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+        var fd = new FormData();   //构造FormData对象
+        fd.append('title', document.getElementById('title').value);
 
         //多文件上传需要遍历添加到 fromdata 对象
         for(var i =0;i<fileList.length;i++){
             fd.append('f1', fileList[i]);//支持多文件上传
         }
 
-        var xhr = new XMLHttpRequest();   //创建对象
-        xhr.open('POST', 'http://127.0.0.1:8080/uploads/', true);
-        xhr.setRequestHeader('content-type', 'multipart/form-data');
-        xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
-        xhr.onreadystatechange = function () {
-            console.log('state change', xhr.readyState);
-            if (this.readyState == 4 && this.status == 200) {
-                var obj = JSON.parse(xhr.responseText);   //返回值
-                console.log(obj);
-                if(obj.fileUrl.length){
-                    alert('上传成功');
-                }
-            }
-        }
-        }
-        document.getElementById('submit').addEventListener('click',upload);
-    </script>
+        // var xhr = new XMLHttpRequest();   //创建对象
+        // xhr.open('POST', 'http://localhost:8100/', true);
+
+        // xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
+        // xhr.onreadystatechange = function () {
+        //     console.log('state change', xhr.readyState);
+        //     if (this.readyState == 4 && this.status == 200) {
+        //         var obj = JSON.parse(xhr.responseText);   //返回值
+        //         console.log(obj);
+        //         if(obj.fileUrl.length){
+        //             alert('上传成功');
+        //         }
+        //     }
+        // }
+        fetch('http://localhost:8100/', {
+            method:'POST',
+            body: fd
+        }).then(response=>response.json())
+        .then(resp=>{
+            console.log(resp);
+        })
+    }
+
+    //绑定提交事件
+    document.getElementById('submit').addEventListener('click',submitUpload);
+</script>
+
+
 
 </body>
 
