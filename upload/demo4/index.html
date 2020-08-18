@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+        body{
+            width: 60rem;
+            align-items: center;
+        }
+        #progress{
+            height: 2rem;
+            width: 20rem;
+            margin: 1rem auto;
+            align-items: center;
+        }
+        #progress div{
+            align-items: center;
+            height: 2rem;
+            width: 0;
+            color: rgb(0, 108, 100);
+            font-size: 1.2rem;
+        }
+        .yellow{
+            background-color: #ff0;
+        }
+        .green {
+            background-color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>表单请求--上传文件-js无感知刷新</h1>
+    <div id="title">title</div>
+    <div>
+        选择文件(可多选)
+        <input type="file" id="f1" multiple>
+        <br>
+        <div id="progress">
+            <div class='yellow'><span id='progressNum'></span></div>
+        </div>
+        <br>
+        <button type="button" id="submit">上传</button>
+    </div>
+    
+<script>
+    function submitUpload() {
+        var progressArea = document.getElementById('progress').firstElementChild;
+        var progressNum = document.getElementById('progressNum');
+        console.log(progressArea);
+        progressArea.style.width = 0;
+        progressArea.classList.remove('green');
+        //获得文件列表，注意这里不是数组，而是对象
+        var fileList = document.getElementById('f1').files;
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+        var fd = new FormData();   //构造FormData对象
+        fd.append('title', document.getElementById('title').value);
+
+        //多文件上传需要遍历添加到 fromdata 对象
+        for(var i =0;i<fileList.length;i++){
+            fd.append('f1', fileList[i]);//支持多文件上传
+        }
+
+        var xhr = new XMLHttpRequest();   //创建对象
+        xhr.open('POST', 'http://localhost:8100/', true);
+
+        xhr.onreadystatechange = function () {
+            console.log('state change', xhr.readyState);
+            if (this.readyState == 4 && this.status == 200) {
+                var obj = JSON.parse(xhr.responseText);   //返回值
+                console.log(obj);
+                if(obj.fileUrl.length){
+                    // alert('上传成功');
+                }
+            }
+        }
+        // console.log(xhr);
+        xhr.onprogress = updateProgress;
+        xhr.upload.onprogress = updateProgress;
+        function updateProgress(event){
+            console.log(event)
+            if(event.lengthComputable){
+                var currProgress = (event.loaded / event.total * 100).toFixed(2);
+                progressArea.style.width = currProgress+'%';
+                progressNum.innerHTML = currProgress+'%';
+                if(currProgress>80){
+                    progressArea.classList.add('green');
+                }
+                console.log('已经上传',currProgress);
+            }
+        }
+        xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
+    }
+
+    //绑定提交事件
+    document.getElementById('submit').addEventListener('click',submitUpload);
+</script>
+
+
+
+</body>
+
+</html>
